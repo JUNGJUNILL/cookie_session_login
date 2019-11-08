@@ -1,0 +1,13 @@
+npm i -g sequelize-cli
+npm install tedious sequelize  -- mssql용 시퀄라이즈 
+sequelize init
+
+npm i express cookie-parser express-session morgan connect-flash pug 
+
+npm i -g nodemon 
+npm i -D nodemon
+
+npm i dotenv
+
+passport 모듈 관련 패키지 
+npm i passport passport-local passport-kakao bcrypt 
