@@ -1,11 +1,13 @@
 const local = require('./localStrategy'); 
 
-const {User} = require('./models'); 
+const {User} =require('../models'); 
 
 module.exports = (passport)=>{
 
+
+                            //▼이 user는 로그인 전략 수행이 성공적으로 완료되었을 경우 반환해준다.
     passport.serializeUser((user,done)=>{
-              //app.js의 app.use(passport.session()으로 인해 req.session에
+              //app.js의 app.use(passport.session())으로 인해 req.session에
               //passport 정보를 저장 할 수 있게 되었고 
               
               //serializeUser는 req.session 객체에 어떤 데이터를 저장할지 선택한다. 
@@ -26,7 +28,9 @@ module.exports = (passport)=>{
 
 
         User.findOne({where:{id}})
-        .then(user=>done(null,user))
+        .then(user=>{done(null,user)
+        console.log('deserializeUser user   ',user);    
+        })
                               //▲해당 아이디에 상응하는 select 데이터를 
                               //user에 저장하고 이것은 req.user에 저장된다. 
                               //select의 컬럼에 따라 
