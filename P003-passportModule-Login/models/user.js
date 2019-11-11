@@ -22,6 +22,10 @@ module.exports = (sequelize, DataTypes) => (
         type: DataTypes.STRING(30),
         allowNull: true,
       },
+      partCode:{
+        type: DataTypes.STRING(40),
+        allowNull: true,
+      },
     }, {
       timestamps: true,
       paranoid: true,

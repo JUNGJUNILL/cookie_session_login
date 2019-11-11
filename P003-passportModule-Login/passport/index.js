@@ -29,13 +29,11 @@ module.exports = (passport)=>{
 
         User.findOne({where:{id}})
         .then(user=>{done(null,user)
-        console.log('deserializeUser user   ',user);    
+        console.log('deserializeUser user   ====>   ',user);    
         })
                               //▲해당 아이디에 상응하는 select 데이터를 
                               //user에 저장하고 이것은 req.user에 저장된다. 
-                              //select의 컬럼에 따라 
-                              //req.user.id, req.user.email , req.user.nick등등으로 접근이 가능 하다. 
-                              //(라우터에서 req.user 객체 사용 가능)
+                            
 
         .catch(err=>done(err));
 
