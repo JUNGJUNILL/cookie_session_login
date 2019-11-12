@@ -12,7 +12,7 @@ exports.isLoggedIn = (req,res,next)=>{
     }
 }
 
-exports.isNotLoggedIn = (req,res,next)=>{S
+exports.isNotLoggedIn = (req,res,next)=>{
     if(!req.isAuthenticated()){;
         //로그인을 하지 않은 경우 false  
 

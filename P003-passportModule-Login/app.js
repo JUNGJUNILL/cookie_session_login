@@ -8,6 +8,7 @@ const passport = require('passport');
 require('dotenv').config(); 
 
 const pageRouter = require('./routes/page'); 
+const authRouter = require('./routes/auth'); 
 const {sequelize} = require('./models'); 
 const passportConfig = require('./passport'); 
 //require('./passport')는  require('./passport/index.js')와 같다.
@@ -79,6 +80,7 @@ app.use(passport.session());    //req.session에 passport 정보를 저장
                                 //연결해야 한다. 
 
 app.use('/',pageRouter); 
+app.use('/auth',authRouter); 
 app.use((req,res,next)=>{
     const err = new Error('Not Fount'); 
     err.status = 404; 

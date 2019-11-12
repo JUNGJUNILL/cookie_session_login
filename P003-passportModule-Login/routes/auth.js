@@ -79,12 +79,29 @@ router.post('/login',isNotLoggedIn,(req,res,next)=>{
 
 }); 
 
+//카카오톡 버튼 누르면 실행된다. 
+//GET /auth/kakao에서 카카오 로그인 창으로 리다이렉트 하고,
+//결과를 /auth/kakao/callback으로 받는다. 
+router.get('/kakao', passport.authenticate('kakao'));
+
+router.get('/kakao/callback', passport.authenticate('kakao', {
+  failureRedirect: '/',
+  //passport.authenticate 메서드에서 콜백 함수를 제공하지 않는다. 
+  //카카오 로그인은 내부적으로 req.login을 호출하므로 우리가 직접 호출할 필요가 없다.
+  //콜백 함수 대신에 로그인에 실패했을 때 어디로 이동할지를 객체 안 failureRedirect 속성에 적어둔다.
+}), (req, res) => {
+    
+  res.redirect('/');
+});
+
 
 //로그아웃 라우터 
-router.get('/',isLoggedIn,(req,res)=>{
+router.get('/logout',isLoggedIn,(req,res)=>{
 
     req.logout(); 
     req.session.destroy(); 
     res.redirect('/'); 
 
 });
+
+module.exports = router;
