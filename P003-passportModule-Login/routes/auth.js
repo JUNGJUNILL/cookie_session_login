@@ -83,7 +83,7 @@ router.post('/login',isNotLoggedIn,(req,res,next)=>{
 //GET /auth/kakao에서 카카오 로그인 창으로 리다이렉트 하고,
 //결과를 /auth/kakao/callback으로 받는다. 
 router.get('/kakao', passport.authenticate('kakao'));
-
+//↓
 router.get('/kakao/callback', passport.authenticate('kakao', {
   failureRedirect: '/',
   //passport.authenticate 메서드에서 콜백 함수를 제공하지 않는다. 
