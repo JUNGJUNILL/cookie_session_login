@@ -59,14 +59,20 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use(session({
     resave : false,
     //요청이 왔을 때 세션에 수정 사항이 생기지 않더라도 세션을 다시 저장할지에 대한 설정 
+    //세션을 항상 저장할지 여부를 저장하는 값(false권장)
 
     saveUninitialized : false,
     //세션에 저장할 내역이 없더라도 세션을 저장할지에 대한 설정, 보통 방문자를 추적할 때 사용 
 
     secret : process.env.COOKIE_SECRET ,
     //필수항목으로 cookie-parser의 비밀키와 같은 역할을 합니다. 
+    //세션을 암호화 해줌
 
     cookie : {
+        
+    //1000이 1초이다.
+    //1000 * 60 * 60 1시간 후 ,1000 * 60 * 120 2시간 후, 1000 * 60 * 180 3시간후.. 
+      maxAge   : 1000 * 60 * 60, //세션 만료시간 설정
       httpOnly : true,
       secure : false, 
     },
